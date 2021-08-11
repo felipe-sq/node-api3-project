@@ -3,7 +3,7 @@ const User = require('../users/users-model.js');
 
 function logger(req, res, next) {
   // DO YOUR MAGIC
-  console.log(req.method, req.url, Date.now() - req.timestamp);
+  console.log(req.method, req.url, req.timestamp);
   next();
 }
 
@@ -27,9 +27,9 @@ const validateUserId = async (req, res, next) => {
 
 function validateUser(req, res, next) {
   // DO YOUR MAGIC
-  if(!req.body.user) {
+  if(!req.body.name) {
     return res.status(400).json({
-      message: 'User is required'
+      message: 'Name is required'
     });
   } else {
     next();
